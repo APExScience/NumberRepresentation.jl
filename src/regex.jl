@@ -6,10 +6,10 @@
 Escape regex special characters in a string literal.
 
 # Input
-. `str` [`String`]: the input string \\
+- `str` [`String`]: the input string
 
 # Output
-. A string with regex special characters escaped.
+- A string with regex special characters escaped.
 """
 function escapeRegexLiteral(str::String)
 	io = IOBuffer()
@@ -32,10 +32,10 @@ end
 	Escape regex special characters in a string.
 
 # Input
-. `s` [`AbstractString`]: the input string \\
+- `s` [`AbstractString`]: the input string
 
 # Output
-. A string with regex special characters escaped.
+- A string with regex special characters escaped.
 """
 function escapeRegex(s::AbstractString) 
 	return replace(s, r"([\\.^$|?*+(){}\[\]])" => s"\\\1")

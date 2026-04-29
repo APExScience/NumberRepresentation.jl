@@ -6,11 +6,11 @@
 Decomposes a number string into its significand and exponent parts based on the provided times symbol.
 
 # Input
-. `s` [`AbstractString`]: the number string to decompose \\
-. `times` [`String`]: the symbol used to separate significand and exponent (e.g., "e", "×") \\
+- `s` [`AbstractString`]: the number string to decompose
+- `times` [`String`]: the symbol used to separate significand and exponent (e.g., "e", "×")
 
 # Output
-. A tuple containing the significand string and the exponent string (or `nothing` if no exponent is present).
+- A tuple containing the significand string and the exponent string (or `nothing` if no exponent is present).
 """
 function decomposeNumberFromString(s::AbstractString, times::String)
 	if occursin(times, s)
@@ -32,12 +32,12 @@ end
 Parses a number string into a numeric value of type `T`, handling both standard and scientific notation based on the provided times symbol.
 
 # Input
-. `s` [`AbstractString`]: the number string to parse \\
-. `times` [`String`]: the symbol used to separate significand and exponent (e.g., "e", "×") \\
-. `T` [`Type{<:Real}`]: the desired numeric type for the output \\
+- `s` [`AbstractString`]: the number string to parse
+- `times` [`String`]: the symbol used to separate significand and exponent (e.g., "e", "×")
+- `T` [`Type{<:Real}`]: the desired numeric type for the output
 
 # Output
-. A numeric value of type `T` representing the parsed number.
+- A numeric value of type `T` representing the parsed number.
 """
 function parseNumberFromString(s::AbstractString, times::String, ::Type{T}) where {T <: Real}
 	r = decomposeNumberFromString(s, times)
@@ -55,7 +55,7 @@ function parseNumberFromString(s::AbstractString, times::String, ::Type{T}) wher
 	return parse(T, replace(s, r"\s+" => ""))
 end
 
-parseNumberFromString(s::AbstractString, times::String) = begin 
+function parseNumberFromString(s::AbstractString, times::String)
 	return parseNumberFromString(s, times, Float64)
 end
 

@@ -6,12 +6,12 @@
 Configuration struct for number representations.
 
 # Fields
-. `signSignificand` [`Bool`]: whether to print the significand's sign \\
-. `signExponent` [`Bool`]: whether to print the exponent's sign \\
-. `shortenOneTimes` [`Bool`]: whether to write numbers of the form 1xB^E as B^E \\
-. `shortenBaseToZero` [`Bool`]: whether to write numbers like B^0 as 1 \\
-. `decimals` [`Integer`]: number of decimals of the significand \\
-. `toleranceShort` [`Real`]: tolerance for comparisons when shortening (absolute) \\
+- `signSignificand` [`Bool`]: whether to print the significand's sign
+- `signExponent` [`Bool`]: whether to print the exponent's sign
+- `shortenOneTimes` [`Bool`]: whether to write numbers of the form 1xB^E as B^E
+- `shortenBaseToZero` [`Bool`]: whether to write numbers like B^0 as 1
+- `decimals` [`Integer`]: number of decimals of the significand
+- `toleranceShort` [`Real`]: tolerance for comparisons when shortening (absolute)
 """
 struct NumberRepresentationConfig{I <: Integer, E <: Real}
 	signSignificand::Bool
@@ -48,10 +48,10 @@ end
 Convert a `NumberRepresentationConfig` object to a dictionary.
 
 # Input
-. `cfg` [`NumberRepresentationConfig`]: the configuration object \\
+- `cfg` [`NumberRepresentationConfig`]: the configuration object
 
 # Output
-. A `Dict{Symbol, Any}` with the configuration parameters.
+- A `Dict{Symbol, Any}` with the configuration parameters.
 """
 function toDict(cfg::NumberRepresentationConfig)
 	return Dict(
