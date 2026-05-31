@@ -8,6 +8,7 @@ import NumberRepresentation:
 	shortenOneTimes!,
 	shortenBaseToZero!,
 	updateRepresentation!,
+	toDict,
 	superscriptSymbolsDictFrom,
 	superscriptSymbolsDictTo
 
@@ -18,6 +19,7 @@ import NumberRepresentation:
 
 include("decomposition.jl")
 include("representation.jl")
+include("config.jl")
 
 # test extension NumberRepresentationMakieRichTextExt.jl
 if ! isnothing(Base.find_package("Makie"))

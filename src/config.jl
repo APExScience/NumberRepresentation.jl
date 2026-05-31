@@ -22,7 +22,7 @@ struct NumberRepresentationConfig{I <: Integer, E <: Real}
 	toleranceShort::E
 end
 
-NumberRepresentationConfig(; signSignificand::Bool = false, signExponent::Bool = false, shortenOneTimes::Bool = false, shortenBaseToZero::Bool = false, decimals::Integer = 6, toleranceShort::Real = 1e-8, args...) = begin
+NumberRepresentationConfig(; signSignificand::Bool = false, signExponent::Bool = false, shortenOneTimes::Bool = false, shortenBaseToZero::Bool = false, decimals::Int = 6, toleranceShort::T = 1e-8, args...) where {T <: Real} = begin
 	if ! isempty(args)
 		unknown = join(keys(args), ", ")
 		@warn("Unknown keyword(s) for NumberRepresentationConfig: $(unknown). Ignoring it (them).")
@@ -31,7 +31,7 @@ NumberRepresentationConfig(; signSignificand::Bool = false, signExponent::Bool =
 	return NumberRepresentationConfig{typeof(decimals), typeof(toleranceShort)}(signSignificand, signExponent, shortenOneTimes, shortenBaseToZero, decimals, toleranceShort)
 end
 
-NumberRepresentationConfig(d::Dict{Symbol, Any}) = begin
+NumberRepresentationConfig(d::AbstractDict{Symbol, V}) where {V} = begin
 	return NumberRepresentationConfig(; d...)
 end
 
@@ -54,7 +54,7 @@ Convert a `NumberRepresentationConfig` object to a dictionary.
 - A `Dict{Symbol, Any}` with the configuration parameters.
 """
 function toDict(cfg::NumberRepresentationConfig)
-	return Dict(
+	return Dict{Symbol, Any}(
 		:signSignificand => cfg.signSignificand,
 		:signExponent => cfg.signExponent,
 		:shortenOneTimes => cfg.shortenOneTimes,
