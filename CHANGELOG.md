@@ -2,8 +2,14 @@
 
 
 
-----
-## [Unreleased]
+
+
+
+---
+## [1.0.5]
+
+## Fixed
+- Improve compatibility of package dependency versions.
 
 
 
